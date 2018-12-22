@@ -1,0 +1,1369 @@
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7f1773f115c0>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_07.34.52/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7f1773f156a8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7f1773f15d08>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7f1773f1a400>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7f1773f1a2f0>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7f1773f1a730>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7f1773f1a620>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7f1773f1aa60>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7f1773f1a950>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7f1773f1ac80>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7f1773f159d8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7f1773f15488>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7f1773f15f28>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7f1773f1a0d0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7f1773f15158>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7f1773f1a510>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7f1773f1aea0>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7f1773f1a840>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7f1773f1ab70>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7f1773f1ad90>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7f1773f1a1e0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7f177402d730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7f1773f1e0d0>
+INFO:root:fn...<function execute at 0x7f177401aea0>
+INFO:root:fn...<function get at 0x7f177401bbf8>
+INFO:root:fn...<function get_blog at 0x7f1773f09c80>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7f1773f1af28>
+INFO:root:fn...<function get_pwd at 0x7f1773f09ea0>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7f1773f09d90>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7f1773f09840>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7f1773f09a60>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7f1773f15ae8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7f1773f15598>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7f1773f15bf8>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7f1773f157b8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7f1773f15268>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7f1773f158c8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7f1773f15378>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7f1773f15048>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7f1773f15e18>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_07.34.52/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7f17740218c8>
+INFO:root:fn...<function post at 0x7f1774021c80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7f1773f09950>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7f1774276f28>
+INFO:root:fn...<function signout at 0x7f1773f09b70>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7f1773f1e158>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7f1773f1e048>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_07.34.52/static
+INFO:root:server started at http://0.0.0.0:9000...
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7f4231ffbf60>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_07.34.52/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7f4231f967b8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7f4231f96e18>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7f4231f9a510>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7f4231f9a400>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7f4231f9a840>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7f4231f9a730>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7f4231f9ab70>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7f4231f9aa60>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7f4231f9ad90>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7f4231f96ae8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7f4231f96598>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7f4231f9a0d0>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7f4231f9a1e0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7f4231f96268>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7f4231f9a620>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7f4231f9f048>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7f4231f9a950>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7f4231f9ac80>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7f4231f9aea0>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7f4231f9a2f0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7f423202f730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7f4231f9f1e0>
+INFO:root:fn...<function execute at 0x7f4232019ea0>
+INFO:root:fn...<function get at 0x7f423201ebf8>
+INFO:root:fn...<function get_blog at 0x7f4231f92d90>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7f4231f9f0d0>
+INFO:root:fn...<function get_pwd at 0x7f4231f96048>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7f4231f92ea0>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7f4231f92950>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7f4231f92b70>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7f4231f96bf8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7f4231f966a8>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7f4231f96d08>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7f4231f968c8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7f4231f96378>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7f4231f969d8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7f4231f96488>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7f4231f96158>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7f4231f96f28>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_07.34.52/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7f423201f8c8>
+INFO:root:fn...<function post at 0x7f423201fc80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7f4231f92a60>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7f4232275f28>
+INFO:root:fn...<function signout at 0x7f4231f92c80>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7f4231f9f268>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7f4231f9f158>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_07.34.52/static
+INFO:root:server started at http://0.0.0.0:9000...
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7fe79b93efd0>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_07.34.52/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7fe79b8d87b8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7fe79b8d8e18>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7fe79b8dc510>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7fe79b8dc400>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7fe79b8dc840>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7fe79b8dc730>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7fe79b8dcb70>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7fe79b8dca60>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7fe79b8dcd90>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7fe79b8d8ae8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7fe79b8d8598>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7fe79b8dc0d0>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7fe79b8dc1e0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7fe79b8d8268>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7fe79b8dc620>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7fe79b8e1048>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7fe79b8dc950>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7fe79b8dcc80>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7fe79b8dcea0>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7fe79b8dc2f0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7fe79b972730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7fe79b8e11e0>
+INFO:root:fn...<function execute at 0x7fe79b95cea0>
+INFO:root:fn...<function get at 0x7fe79b961bf8>
+INFO:root:fn...<function get_blog at 0x7fe79b8d1d90>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7fe79b8e10d0>
+INFO:root:fn...<function get_pwd at 0x7fe79b8d8048>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7fe79b8d1ea0>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7fe79b8d1950>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7fe79b8d1b70>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7fe79b8d8bf8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7fe79b8d86a8>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7fe79b8d8d08>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7fe79b8d88c8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7fe79b8d8378>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7fe79b8d89d8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7fe79b8d8488>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7fe79b8d8158>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7fe79b8d8f28>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_07.34.52/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7fe79b9628c8>
+INFO:root:fn...<function post at 0x7fe79b962c80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7fe79b8d1a60>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7fe79bbb8f28>
+INFO:root:fn...<function signout at 0x7fe79b8d1c80>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7fe79b8e1268>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7fe79b8e1158>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_07.34.52/static
+INFO:root:server started at http://0.0.0.0:9000...
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7ff63a603fd0>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_07.34.52/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7ff63a59d7b8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7ff63a59de18>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7ff63a5a1510>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7ff63a5a1400>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7ff63a5a1840>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7ff63a5a1730>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7ff63a5a1b70>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7ff63a5a1a60>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7ff63a5a1d90>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7ff63a59dae8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7ff63a59d598>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7ff63a5a10d0>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7ff63a5a11e0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7ff63a59d268>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7ff63a5a1620>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7ff63a5a6048>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7ff63a5a1950>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7ff63a5a1c80>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7ff63a5a1ea0>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7ff63a5a12f0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7ff63a637730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7ff63a5a61e0>
+INFO:root:fn...<function execute at 0x7ff63a622ea0>
+INFO:root:fn...<function get at 0x7ff63a627bf8>
+INFO:root:fn...<function get_blog at 0x7ff63a59cd90>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7ff63a5a60d0>
+INFO:root:fn...<function get_pwd at 0x7ff63a59d048>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7ff63a59cea0>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7ff63a59c950>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7ff63a59cb70>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7ff63a59dbf8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7ff63a59d6a8>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7ff63a59dd08>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7ff63a59d8c8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7ff63a59d378>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7ff63a59d9d8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7ff63a59d488>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7ff63a59d158>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7ff63a59df28>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_07.34.52/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7ff63a6288c8>
+INFO:root:fn...<function post at 0x7ff63a628c80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7ff63a59ca60>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7ff63a87df28>
+INFO:root:fn...<function signout at 0x7ff63a59cc80>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7ff63a5a6268>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7ff63a5a6158>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_07.34.52/static
+INFO:root:server started at http://0.0.0.0:9000...
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7f1b92fa7588>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_08.04.52/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7f1b92fa26a8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7f1b92fa2d08>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7f1b92fa9400>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7f1b92fa92f0>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7f1b92fa9730>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7f1b92fa9620>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7f1b92fa9a60>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7f1b92fa9950>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7f1b92fa9c80>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7f1b92fa29d8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7f1b92fa2488>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7f1b92fa2f28>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7f1b92fa90d0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7f1b92fa2158>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7f1b92fa9510>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7f1b92fa9ea0>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7f1b92fa9840>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7f1b92fa9b70>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7f1b92fa9d90>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7f1b92fa91e0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7f1b930bb730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7f1b92fab0d0>
+INFO:root:fn...<function execute at 0x7f1b930a8ea0>
+INFO:root:fn...<function get at 0x7f1b930aebf8>
+INFO:root:fn...<function get_blog at 0x7f1b92fa0c80>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7f1b92fa9f28>
+INFO:root:fn...<function get_pwd at 0x7f1b92fa0ea0>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7f1b92fa0d90>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7f1b92fa0840>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7f1b92fa0a60>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7f1b92fa2ae8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7f1b92fa2598>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7f1b92fa2bf8>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7f1b92fa27b8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7f1b92fa2268>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7f1b92fa28c8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7f1b92fa2378>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7f1b92fa2048>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7f1b92fa2e18>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_08.04.52/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7f1b930af8c8>
+INFO:root:fn...<function post at 0x7f1b930afc80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7f1b92fa0950>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7f1b93304f28>
+INFO:root:fn...<function signout at 0x7f1b92fa0b70>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7f1b92fab158>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7f1b92fab048>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_08.04.52/static
+INFO:root:server started at http://127.0.0.1:9000...
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7fc6d4af9588>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_08.12.36/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7fc6d4af56a8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7fc6d4af5d08>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7fc6d4afc400>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7fc6d4afc2f0>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7fc6d4afc730>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7fc6d4afc620>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7fc6d4afca60>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7fc6d4afc950>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7fc6d4afcc80>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7fc6d4af59d8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7fc6d4af5488>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7fc6d4af5f28>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7fc6d4afc0d0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7fc6d4af5158>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7fc6d4afc510>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7fc6d4afcea0>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7fc6d4afc840>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7fc6d4afcb70>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7fc6d4afcd90>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7fc6d4afc1e0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7fc6d4c0f730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7fc6d4b000d0>
+INFO:root:fn...<function execute at 0x7fc6d4bfcea0>
+INFO:root:fn...<function get at 0x7fc6d4c02bf8>
+INFO:root:fn...<function get_blog at 0x7fc6d4af2c80>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7fc6d4afcf28>
+INFO:root:fn...<function get_pwd at 0x7fc6d4af2ea0>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7fc6d4af2d90>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7fc6d4af2840>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7fc6d4af2a60>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7fc6d4af5ae8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7fc6d4af5598>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7fc6d4af5bf8>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7fc6d4af57b8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7fc6d4af5268>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7fc6d4af58c8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7fc6d4af5378>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7fc6d4af5048>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7fc6d4af5e18>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_08.12.36/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7fc6d4c038c8>
+INFO:root:fn...<function post at 0x7fc6d4c03c80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7fc6d4af2950>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7fc6d4e58f28>
+INFO:root:fn...<function signout at 0x7fc6d4af2b70>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7fc6d4b00158>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7fc6d4b00048>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_08.12.36/static
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1045, in create_server
+    sock.bind(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/srv/awesome/www/app.py", line 165, in <module>
+    loop.run_until_complete(init(loop))
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 468, in run_until_complete
+    return future.result()
+  File "/srv/awesome/www/app.py", line 160, in init
+    srv = await loop.create_server(app.make_handler(), '188.131.139.166', 9000)
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1049, in create_server
+    % (sa, err.strerror.lower()))
+OSError: [Errno 99] error while attempting to bind on address ('188.131.139.166', 9000): cannot assign requested address
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7faac439cf98>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_08.12.36/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7faac424e7b8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7faac424ee18>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7faac4252510>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7faac4252400>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7faac4252840>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7faac4252730>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7faac4252b70>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7faac4252a60>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7faac4252d90>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7faac424eae8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7faac424e598>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7faac42520d0>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7faac42521e0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7faac424e268>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7faac4252620>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7faac4257048>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7faac4252950>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7faac4252c80>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7faac4252ea0>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7faac42522f0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7faac43cf730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7faac42571e0>
+INFO:root:fn...<function execute at 0x7faac43b9ea0>
+INFO:root:fn...<function get at 0x7faac43bfbf8>
+INFO:root:fn...<function get_blog at 0x7faac424ad90>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7faac42570d0>
+INFO:root:fn...<function get_pwd at 0x7faac424e048>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7faac424aea0>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7faac424a950>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7faac424ab70>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7faac424ebf8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7faac424e6a8>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7faac424ed08>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7faac424e8c8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7faac424e378>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7faac424e9d8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7faac424e488>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7faac424e158>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7faac424ef28>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_08.12.36/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7faac43c08c8>
+INFO:root:fn...<function post at 0x7faac43c0c80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7faac424aa60>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7faac4615f28>
+INFO:root:fn...<function signout at 0x7faac424ac80>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7faac4257268>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7faac4257158>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_08.12.36/static
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1045, in create_server
+    sock.bind(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/srv/awesome/www/app.py", line 165, in <module>
+    loop.run_until_complete(init(loop))
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 468, in run_until_complete
+    return future.result()
+  File "/srv/awesome/www/app.py", line 160, in init
+    srv = await loop.create_server(app.make_handler(), '188.131.139.166', 9000)
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1049, in create_server
+    % (sa, err.strerror.lower()))
+OSError: [Errno 99] error while attempting to bind on address ('188.131.139.166', 9000): cannot assign requested address
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7f52bbf77f98>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_08.12.36/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7f52bbf127b8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7f52bbf12e18>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7f52bbf16510>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7f52bbf16400>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7f52bbf16840>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7f52bbf16730>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7f52bbf16b70>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7f52bbf16a60>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7f52bbf16d90>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7f52bbf12ae8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7f52bbf12598>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7f52bbf160d0>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7f52bbf161e0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7f52bbf12268>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7f52bbf16620>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7f52bbf1b048>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7f52bbf16950>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7f52bbf16c80>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7f52bbf16ea0>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7f52bbf162f0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7f52bbfab730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7f52bbf1b1e0>
+INFO:root:fn...<function execute at 0x7f52bbf95ea0>
+INFO:root:fn...<function get at 0x7f52bbf9abf8>
+INFO:root:fn...<function get_blog at 0x7f52bbf0ad90>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7f52bbf1b0d0>
+INFO:root:fn...<function get_pwd at 0x7f52bbf12048>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7f52bbf0aea0>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7f52bbf0a950>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7f52bbf0ab70>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7f52bbf12bf8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7f52bbf126a8>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7f52bbf12d08>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7f52bbf128c8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7f52bbf12378>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7f52bbf129d8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7f52bbf12488>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7f52bbf12158>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7f52bbf12f28>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_08.12.36/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7f52bbf9b8c8>
+INFO:root:fn...<function post at 0x7f52bbf9bc80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7f52bbf0aa60>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7f52bc1f1f28>
+INFO:root:fn...<function signout at 0x7f52bbf0ac80>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7f52bbf1b268>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7f52bbf1b158>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_08.12.36/static
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1045, in create_server
+    sock.bind(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/srv/awesome/www/app.py", line 165, in <module>
+    loop.run_until_complete(init(loop))
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 468, in run_until_complete
+    return future.result()
+  File "/srv/awesome/www/app.py", line 160, in init
+    srv = await loop.create_server(app.make_handler(), '188.131.139.166', 9000)
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1049, in create_server
+    % (sa, err.strerror.lower()))
+OSError: [Errno 99] error while attempting to bind on address ('188.131.139.166', 9000): cannot assign requested address
+INFO:root:found model: User (table: users)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: email ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: passwd ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: admin ==> <BooleanField, boolean:None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Blog (table: blogs)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: sort_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: summary ==> <StringField, varchar(200):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Comment (table: comments)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: blog_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: content ==> <TextField, text:None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:found model: Sort (table: sorts)
+INFO:root:  found mapping: id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: class_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: user_image ==> <StringField, varchar(500):None>
+INFO:root:  found mapping: updated_at ==> <FloatField, real:None>
+INFO:root:  found mapping: updated_user_id ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: updated_user_name ==> <StringField, varchar(50):None>
+INFO:root:  found mapping: created_at ==> <FloatField, real:None>
+INFO:root:create database connection pool...
+INFO:root:init jinja2...<Application 0x7ff21b136f28>
+INFO:root:set jinja2 template path: /srv/awesome/www/templates
+INFO:root:add_routes...handlers
+INFO:root:mod...<module 'handlers' from '/srv/awesome/www-18-09-12_08.12.36/handlers.py'>
+INFO:root:fn...<class 'apis.APIError'>
+INFO:root:fn...<class 'apis.APIPermissionError'>
+INFO:root:fn...<class 'apis.APIResourceNotFoundError'>
+INFO:root:fn...<class 'apis.APIValueError'>
+INFO:root:fn...<class 'models.Blog'>
+INFO:root:fn...awesession
+INFO:root:fn...<class 'models.Comment'>
+INFO:root:fn...<class 'apis.Page'>
+INFO:root:fn...<class 'models.Sort'>
+INFO:root:fn...<class 'models.User'>
+INFO:root:fn...<function api_blogs at 0x7ff21b0d07b8>
+INFO:root:add route GET /api/blogs => api_blogs(page, name, sortid, page_size)
+INFO:root:fn...<function api_comments at 0x7ff21b0d0e18>
+INFO:root:add route GET /api/comments => api_comments(page)
+INFO:root:fn...<function api_create_blog at 0x7ff21b0d4510>
+INFO:root:add route POST /api/blogs => api_create_blog(request, name, summary, content, sort_id)
+INFO:root:fn...<function api_create_comment at 0x7ff21b0d4400>
+INFO:root:add route POST /api/blogs/{id}/comments => api_create_comment(id, request, content)
+INFO:root:fn...<function api_create_sort at 0x7ff21b0d4840>
+INFO:root:add route POST /api/sorts => api_create_sort(request, class_name)
+INFO:root:fn...<function api_delete_blog at 0x7ff21b0d4730>
+INFO:root:add route POST /api/blogs/{id}/delete => api_delete_blog(id, request)
+INFO:root:fn...<function api_delete_comments at 0x7ff21b0d4b70>
+INFO:root:add route POST /api/comments/{id}/delete => api_delete_comments(id, request)
+INFO:root:fn...<function api_delete_sort at 0x7ff21b0d4a60>
+INFO:root:add route POST /api/sorts/{id}/delete => api_delete_sort(id, request)
+INFO:root:fn...<function api_delete_users at 0x7ff21b0d4d90>
+INFO:root:add route POST /api/users/{id}/delete => api_delete_users(id, request)
+INFO:root:fn...<function api_get_blog at 0x7ff21b0d0ae8>
+INFO:root:add route GET /api/blogs/{id} => api_get_blog(id, request)
+INFO:root:fn...<function api_get_sort at 0x7ff21b0d0598>
+INFO:root:add route GET /api/sorts/{id} => api_get_sort(id, request)
+INFO:root:fn...<function api_get_users at 0x7ff21b0d40d0>
+INFO:root:add route GET /api/users => api_get_users(page)
+INFO:root:fn...<function api_register_user at 0x7ff21b0d41e0>
+INFO:root:add route POST /api/users => api_register_user(email, name, password)
+INFO:root:fn...<function api_sorts at 0x7ff21b0d0268>
+INFO:root:add route GET /api/sorts => api_sorts(page)
+INFO:root:fn...<function api_update_blog at 0x7ff21b0d4620>
+INFO:root:add route POST /api/blogs/{id} => api_update_blog(id, request, name, summary, content, sort_id)
+INFO:root:fn...<function api_update_pwd_users at 0x7ff21b0d9048>
+INFO:root:add route POST /api/users/pwd/{id}/update => api_update_pwd_users(id, request, passwd, passwd2)
+INFO:root:fn...<function api_update_sort at 0x7ff21b0d4950>
+INFO:root:add route POST /api/sorts/{id} => api_update_sort(id, request, class_name)
+INFO:root:fn...<function api_update_users at 0x7ff21b0d4c80>
+INFO:root:add route POST /api/users/{id}/edit => api_update_users(id, request)
+INFO:root:fn...<function api_updates_users at 0x7ff21b0d4ea0>
+INFO:root:add route POST /api/users/{id}/update => api_updates_users(id, request, name)
+INFO:root:fn...<module 'asyncio' from '/usr/lib/python3.6/asyncio/__init__.py'>
+INFO:root:fn...<function authenticate at 0x7ff21b0d42f0>
+INFO:root:add route POST /api/authenticate => authenticate(email, passwd)
+INFO:root:fn...<module 'base64' from '/usr/lib/python3.6/base64.py'>
+INFO:root:fn...<function check_admin at 0x7ff21b16a730>
+INFO:root:fn...{'debug': True, 'db': {'host': '127.0.0.1', 'port': 3306, 'user': 'ubuntu', 'password': '664991558', 'db': 'awesome'}, 'session': {'secret': 'Awesome'}}
+INFO:root:fn...<function cookie2user at 0x7ff21b0d91e0>
+INFO:root:fn...<function execute at 0x7ff21b154ea0>
+INFO:root:fn...<function get at 0x7ff21b155bf8>
+INFO:root:fn...<function get_blog at 0x7ff21b0cbd90>
+INFO:root:add route GET /blog/{id} => get_blog(id, request)
+INFO:root:fn...<function get_page_index at 0x7ff21b0d90d0>
+INFO:root:fn...<function get_pwd at 0x7ff21b0d0048>
+INFO:root:add route GET /pwd/{id} => get_pwd(id, request)
+INFO:root:fn...<function get_user at 0x7ff21b0cbea0>
+INFO:root:add route GET /user/{id} => get_user(id, request)
+INFO:root:fn...<module 'hashlib' from '/usr/lib/python3.6/hashlib.py'>
+INFO:root:fn...<function index at 0x7ff21b0cb950>
+INFO:root:add route GET / => index(request, page, sortid)
+INFO:root:fn...<module 'json' from '/usr/lib/python3.6/json/__init__.py'>
+INFO:root:fn...<module 'logging' from '/usr/lib/python3.6/logging/__init__.py'>
+INFO:root:fn...<function login at 0x7ff21b0cbb70>
+INFO:root:add route GET /signin => login()
+INFO:root:fn...<function manage at 0x7ff21b0d0bf8>
+INFO:root:add route GET /manage/ => manage()
+INFO:root:fn...<function manage_blogs at 0x7ff21b0d06a8>
+INFO:root:add route GET /manage/blogs => manage_blogs(page, name, request)
+INFO:root:fn...<function manage_comments at 0x7ff21b0d0d08>
+INFO:root:add route GET /manage/comments => manage_comments(request, page)
+INFO:root:fn...<function manage_create_blog at 0x7ff21b0d08c8>
+INFO:root:add route GET /manage/blogs/create => manage_create_blog(request)
+INFO:root:fn...<function manage_create_sort at 0x7ff21b0d0378>
+INFO:root:add route GET /manage/sorts/create => manage_create_sort(request)
+INFO:root:fn...<function manage_edit_blog at 0x7ff21b0d09d8>
+INFO:root:add route GET /manage/blogs/edit => manage_edit_blog(request, id)
+INFO:root:fn...<function manage_edit_sort at 0x7ff21b0d0488>
+INFO:root:add route GET /manage/sorts/edit => manage_edit_sort(request, id)
+INFO:root:fn...<function manage_sorts at 0x7ff21b0d0158>
+INFO:root:add route GET /manage/sorts => manage_sorts(page, request)
+INFO:root:fn...<function manage_users at 0x7ff21b0d0f28>
+INFO:root:add route GET /manage/users => manage_users(request, page)
+INFO:root:fn...<module 'markdown2' from '/srv/awesome/www-18-09-12_08.12.36/markdown2.py'>
+INFO:root:fn...<function next_id at 0x7ff21b15b8c8>
+INFO:root:fn...<function post at 0x7ff21b15bc80>
+INFO:root:fn...<module 're' from '/usr/lib/python3.6/re.py'>
+INFO:root:fn...<function register at 0x7ff21b0cba60>
+INFO:root:add route GET /register => register()
+INFO:root:fn...<function select at 0x7ff21b3b0f28>
+INFO:root:fn...<function signout at 0x7ff21b0cbc80>
+INFO:root:add route GET /signout => signout(request)
+INFO:root:fn...<function text2html at 0x7ff21b0d9268>
+INFO:root:fn...<module 'time' (built-in)>
+INFO:root:fn...<function user2cookie at 0x7ff21b0d9158>
+INFO:root:fn...<module 'aiohttp.web' from '/usr/local/lib/python3.6/dist-packages/aiohttp/web.py'>
+INFO:root:add static /static/ => /srv/awesome/www-18-09-12_08.12.36/static
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1045, in create_server
+    sock.bind(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/srv/awesome/www/app.py", line 165, in <module>
+    loop.run_until_complete(init(loop))
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 468, in run_until_complete
+    return future.result()
+  File "/srv/awesome/www/app.py", line 160, in init
+    srv = await loop.create_server(app.make_handler(), '188.131.139.166', 9000)
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1049, in create_server
+    % (sa, err.strerror.lower()))
+OSError: [Errno 99] error while attempting to bind on address ('188.131.139.166', 9000): cannot assign requested address
